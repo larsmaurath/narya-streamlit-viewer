@@ -1,1 +1,0 @@
-cython-bbox==0.1.3
