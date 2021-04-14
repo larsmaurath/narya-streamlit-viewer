@@ -104,10 +104,10 @@ if image_selection:
         col1, col2, col3 = st.beta_columns(3)
         
         with col1:
-            st.image(image)
+            st.image(image, use_column_width= 'always')
 
         with col2:
-            st.image("narya_output/test_00000.jpg")
+            st.image("narya_output/test_00000.jpg", use_column_width= 'always')
 
         with col3: 
             
