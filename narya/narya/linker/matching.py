@@ -7,7 +7,7 @@ from .kalman_filter import chi2inv95
 from ..utils.utils import to_torch, to_numpy
 
 import pyximport; pyximport.install()
-from .cython_bbox import bbox_overlaps
+import cython_bbox 
 """
 
 Cloned from https://github.com/Zhongdao/Towards-Realtime-MOT
