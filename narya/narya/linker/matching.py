@@ -1,11 +1,13 @@
 import lap
 import numpy as np
 import scipy
-from cython_bbox import bbox_overlaps as bbox_ious
+#from cython_bbox import bbox_overlaps as bbox_ious
 from scipy.spatial.distance import cdist
 from .kalman_filter import chi2inv95
 from ..utils.utils import to_torch, to_numpy
 
+import pyximport; pyximport.install()
+import cython_bbox 
 """
 
 Cloned from https://github.com/Zhongdao/Towards-Realtime-MOT
