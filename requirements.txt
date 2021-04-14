@@ -2,6 +2,7 @@ streamlit == 0.69.1
 streamlit-drawable-canvas
 scipy
 mplsoccer
+seaborn
 tensorflow==2.2.0
 torch==1.5.0
 torchvision==0.6.0
