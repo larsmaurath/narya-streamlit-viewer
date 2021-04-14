@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import mxnet as mx
+#import mxnet as mx
 import numpy as np
 import tensorflow as tf
 
