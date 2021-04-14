@@ -98,23 +98,23 @@ if image_selection:
     
         st.title('Tracking Results')
     
-        lines_expander = st.beta_expander('From left to right: the original image, overlayed bounding boxes + homography and a schematic represenation',
+        st.write('From left to right: the original image, overlayed bounding boxes + homography and a schematic represenation',
                                           expanded=True)
-        with lines_expander:
-            col_, col1, col_, col2, col_, col3 = st.beta_columns([0.5,4,0.5,4,0.5,4])
-    
-            with col1:
-                st.image(image)
-    
-            with col2:
-                st.image("narya_output/test_00000.jpg")
-    
-            with col3: 
-                
-                st.pyplot(fig)
+        
+        col1, col2, col3 = st.beta_columns(3)
+        
+        with col1:
+            st.image(image, use_column_width= 'always')
 
-        review = st.selectbox('Do the results look good:', ['', 'Yes and export', 'No and manually fix'], 
-                                format_func=lambda x: 'Do the results look good' if x == '' else x)
+        with col2:
+            st.image("narya_output/test_00000.jpg", use_column_width= 'always')
+
+        with col3: 
+            
+            st.pyplot(fig)
+        
+        review = st.selectbox('Do the results look good?:', ['', 'Yes and export', 'No and manually fix'], 
+                                format_func=lambda x: 'Do the results look good?' if x == '' else x)
         
         if review:
             if review == 'Yes and export':
