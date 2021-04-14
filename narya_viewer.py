@@ -28,19 +28,6 @@ def create_tracker():
         
     return tracker
 
-@st.cache(allow_output_mutation=True)
-def run_tracker(tracker, img_list):
-    trajectories = tracker(img_list,
-                           split_size = 512, 
-                           save_tracking_folder = 'narya_output/', 
-                           template = template, 
-                           skip_homo = [])
-    
-    return trajectories
-
-
-#tracker = create_tracker()
-
 template = cv2.imread('narya/world_cup_template.png')
 template = cv2.resize(template, (512,512))/255.
 
@@ -64,13 +51,11 @@ if image_selection:
                 image = play.get_frame(t)
                 image = cv2.imread("atm_che_23022021_62_07_2.jpg")
                 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-                
-                #image = PitchImage(pitch, image=play.get_frame(t))
+
             else:
                 
                 file_bytes = np.asarray(bytearray(uploaded_file.read()),dtype=np.uint8)
                 image = cv2.imdecode(file_bytes, 1)
-                #image = cv2.imread("atm_che_23022021_62_07_2.jpg")
                 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     
     if image is not None:
@@ -112,19 +97,6 @@ if image_selection:
         with col3: 
             
             st.pyplot(fig)
-        
-        # with lines_expander:
-        #     col_, col1, col_, col2, col_, col3 = st.beta_columns([0.5,4,0.5,4,0.5,4])
-    
-        #     with col1:
-        #         st.image(image)
-    
-        #     with col2:
-        #         st.image("narya_output/test_00000.jpg")
-    
-        #     with col3: 
-                
-        #         st.pyplot(fig)
 
         review = st.selectbox('Do the results look good?:', ['', 'Yes and export', 'No and manually fix'], 
                                 format_func=lambda x: 'Do the results look good?' if x == '' else x)
