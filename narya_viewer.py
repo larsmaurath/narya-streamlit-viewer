@@ -83,7 +83,7 @@ if image_selection:
             x_coords = [x/320*120 for x in x_coords]
             y_coords = [y/320*80 for y in y_coords]
         
-            plot = Pitch(view='full', figsize=(6.8, 10.5), orientation='horizontal')
+            plot = Pitch(figsize=(6.8, 10.5))
             fig, ax = plot.draw()
             
             plot.scatter(x_coords, y_coords, ax=ax, c='#c34c45', s=150)
