@@ -92,22 +92,29 @@ class PlayerBallTracker:
                 vertical = tlwh[2] / tlwh[3] > 1.6
                 if tlwh[2] * tlwh[3] > 100 and not vertical:
                     box = tlwh_to_tlbr(tlwh)
-                    box_image = resized_image[int(box[0]):int(box[1]), int(box[2]):int(box[3])]
-                          
-                    pixels = np.float32(box_image.reshape(-1, 3))
-
-                    n_colors = 5
-                    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
-                    flags = cv2.KMEANS_RANDOM_CENTERS
                     
-                    try: 
-                        _, labels, palette = cv2.kmeans(pixels, n_colors, None, criteria, 10, flags) 
-                        _, counts = np.unique(labels, return_counts=True)
+                    # This is preliminary code to estimate dominant colors of
+                    # Each bounding box
+                    
+                    # box_image = resized_image[int(box[0]):int(box[1]), int(box[2]):int(box[3])]
+                    
+                    # pixels = np.float32(box_image.reshape(-1, 3))
+                    # pixels = pixels[(pixels[:,1] <= pixels[:,0]) & (pixels[:,1] <= pixels[:,2])]
+                   
+                    
+                    # n_colors = 5
+                    # criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
+                    # flags = cv2.KMEANS_RANDOM_CENTERS
+                    
+                    # try: 
+                    #     _, labels, palette = cv2.kmeans(pixels, n_colors, None, criteria, 10, flags) 
+                    #     _, counts = np.unique(labels, return_counts=True)
     
-                        avg_colors.append(tuple(palette[np.argmax(counts)].tolist()))
+                    #     avg_colors.append(tuple(palette[np.argmax(counts)].tolist()))
                     
-                    except:
-                        avg_colors.append((0,0,0))
+                    # except:
+                    #     avg_colors.append((0,0,0))
+                    avg_colors.append((0,0,0))
                     
                     online_boxs.append(box)
                     online_tlwhs.append(tlwh)
